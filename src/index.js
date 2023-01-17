@@ -32,6 +32,10 @@ input.addEventListener(
         );
       } else if (arr.length >= 2) {
         ul.insertAdjacentHTML('beforeend', makeList(arr));
+
+        Object.assign(ul.style, {
+          listStyle: 'none',
+        });
       } else if (arr.length === 1) {
         div.innerHTML = makeCard(arr[0]);
       } else {
@@ -42,12 +46,14 @@ input.addEventListener(
 );
 
 function makeList(arr) {
-  return arr
+  const list = arr
     .map(
       el =>
         `<li ><svg width='30' height ='30'><img src="${el.flags.svg}" width='30' height ='30' /></svg>${el.name.official}</li>`
     )
     .join('');
+
+  return list;
 }
 
 function makeCard(country) {
